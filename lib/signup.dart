@@ -74,14 +74,16 @@ class _SignUpPageState extends State<SignUpPage> {
             boxShadow: <BoxShadow>[
               BoxShadow(
                   color: Colors.white70,
-                  offset: Offset(2, 2),
-                  blurRadius: 2,
+//                  offset: Offset(2, 2),
+                  blurRadius: 0,
               )
             ],
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [Color(0xfffbb448), Color(0xfff7892b)])),
+//            gradient: LinearGradient(
+//                begin: Alignment.centerLeft,
+//                end: Alignment.centerRight,
+//                colors: [Color(0xfffbb448), Color(0xfff7892b)])
+        color: Colors.deepPurple,
+               ),
         child: Text(
           'Register Now',
           style: TextStyle(fontSize: 20, color: Colors.white),
@@ -118,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Text(
                 'Login',
                 style: TextStyle(
-                    color: Color(0xfff79c4f),
+                    color: Colors.cyan.shade500,
                     fontSize: 13,
                     fontWeight: FontWeight.w600),
               ),
@@ -138,7 +140,7 @@ class _SignUpPageState extends State<SignUpPage> {
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 30,
             fontWeight: FontWeight.w700,
-            color: Color(0xffe46b10),
+            color: Colors.deepOrangeAccent,
           ),
           children: [
             TextSpan(
@@ -147,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             TextSpan(
               text: 'nup',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
+              style: TextStyle(color: Colors.cyan.shade500, fontSize: 30),
             ),
           ]),
     );
@@ -177,7 +179,8 @@ class _SignUpPageState extends State<SignUpPage> {
             Positioned(
               top: -MediaQuery.of(context).size.height * .15,
               right: -MediaQuery.of(context).size.width * .4,
-              child: BezierContainer(),
+              child: BezierContainer(
+              ),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),

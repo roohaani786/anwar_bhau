@@ -1,6 +1,48 @@
 import 'package:flutter/material.dart';
 
+
+
 class Welcome extends StatelessWidget {
+  Widget _divider() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                color: Colors.lightGreenAccent,
+                thickness: 1,
+              ),
+            ),
+          ),
+          Text('OR',style:
+          TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          ),),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(
+                color: Colors.lightGreenAccent,
+                thickness: 1,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+    );
+  }
+
 //  final VoidCallback tappu;
 //  Onboard({
 //    Key key,
@@ -15,36 +57,37 @@ class Welcome extends StatelessWidget {
       return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
+            flexibleSpace: FlexibleSpaceBar(title: Text("WELCOME",style:
+              TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.orangeAccent,
+              ),),titlePadding: EdgeInsets.only(left: 160.0),),
+//            title: Text("Welcome"),
             actions: <Widget>[
+
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.help_outline),
-              ),
+                padding: const EdgeInsets.all(32.0),
+                child: Icon(Icons.help_outline,
+                color: Colors.lightGreenAccent,),),
+
             ],
           ),
           backgroundColor: Colors.black,
           body: Container(
-            child: Column(
 
+            child: Column(
+mainAxisAlignment: MainAxisAlignment.center,
 
               children: <Widget>[
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
-                  child: new Image.asset("lib/assets/images/quarantine.png"),
+                  padding: const EdgeInsets.only(left: 30.0,top: 20.0),
+                  child: new Image.asset("lib/assets/images/q.png"),
                 ),
+
                 Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Text("Quarantine Courses",style:
-                  TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                  ),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0,top: 30.0,right: 10.0),
-                  child: Text("An e-learning initiative to provide Tech/non-tech knowledge at an affordable cost. Let's learn together.",textAlign: TextAlign.center,maxLines: 3,style:
+                  padding: const EdgeInsets.only(left: 10.0,top: 80.0,right: 10.0),
+                  child: Text("An e-learning initiative to provide tech / non-tech knowledge at an affordable price. Let's learn together.",textAlign: TextAlign.center,maxLines: 3,style:
                   TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
@@ -59,6 +102,7 @@ class Welcome extends StatelessWidget {
 
                   child: Column(
                     children: <Widget>[
+
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
@@ -78,7 +122,7 @@ class Welcome extends StatelessWidget {
 
 
                               decoration: BoxDecoration(
-                                color: Colors.orange,
+                                color: Colors.deepPurple,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Align(
@@ -94,14 +138,7 @@ class Welcome extends StatelessWidget {
                         ),
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Text("OR",style:
-                        TextStyle(
-                          color: Colors.white,
-                        ),),
-                      ),
-
+                      _divider(),
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: GestureDetector(
@@ -117,7 +154,7 @@ class Welcome extends StatelessWidget {
 
 
                             decoration: BoxDecoration(
-                              color: Colors.green,
+                              color: Colors.deepOrange,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Align(

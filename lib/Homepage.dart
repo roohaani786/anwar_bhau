@@ -212,7 +212,7 @@ class _CurrentPageState extends State<CurrentPage> {
             ),
             TextSpan(
               text: 'nup',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
+              style: TextStyle(color: Colors.cyanAccent, fontSize: 30),
             ),
           ]),
     );

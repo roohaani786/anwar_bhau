@@ -269,7 +269,8 @@ class _JoinnowState extends State<Joinnow> {
                     color: Colors.green.shade700,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: CheckboxListTile(
+
+                    child: CheckboxListTile(
                     title: Text("Audio Only",style: TextStyle(color: Colors.white)),
                     value: isAudioOnly,
                     onChanged: _onAudioOnlyChanged,

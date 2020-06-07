@@ -69,13 +69,15 @@ class _LoginPageState extends State<LoginPage> {
           boxShadow: <BoxShadow>[
             BoxShadow(
                 color: Colors.grey.shade200,
-                offset: Offset(2, 2),
+//                offset: Offset(2, 2),
             )
           ],
-          gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Color(0xfffbb448), Color(0xfff7892b)])),
+//          gradient: LinearGradient(
+//              begin: Alignment.centerLeft,
+//              end: Alignment.centerRight,
+//              colors: [Color(0xfffbb448), Color(0xfff7892b)])
+color: Colors.deepPurple,
+      ),
       child: Text(
         'Login',
         style: TextStyle(fontSize: 20, color: Colors.white),
@@ -95,11 +97,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Divider(
+                color: Colors.lightGreenAccent,
                 thickness: 1,
               ),
             ),
           ),
-          Text('or',style:
+          Text('OR',style:
             TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -109,6 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Divider(
+                color: Colors.lightGreenAccent,
                 thickness: 1,
               ),
             ),
@@ -151,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
             flex: 5,
             child: Container(
               decoration: BoxDecoration(
-               color: Color(0xff2872ba),
+               color: Colors.deepPurple,
 
                 borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(5),
@@ -198,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Text(
                 'Register',
                 style: TextStyle(
-                    color: Color(0xfff79c4f),
+                    color: Colors.cyan.shade500,
                     fontSize: 13,
                     fontWeight: FontWeight.w600),
               ),
@@ -218,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
             textStyle: Theme.of(context).textTheme.display1,
             fontSize: 30,
             fontWeight: FontWeight.w700,
-            color: Color(0xffe46b10),
+            color: Colors.deepOrangeAccent,
           ),
           children: [
             TextSpan(
@@ -227,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             TextSpan(
               text: 'in',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
+              style: TextStyle(color: Colors.cyan.shade500, fontSize: 30),
             ),
           ]),
     );
