@@ -56,7 +56,7 @@ class _JoinnowState extends State<Joinnow> {
             ),
             TextSpan(
               text: 'ing',
-              style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
+              style: TextStyle(color: Colors.cyanAccent, fontSize: 30),
             ),
           ]),
     );
