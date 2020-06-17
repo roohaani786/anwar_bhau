@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:quarantine_flutter/Widget/bezierContainer.dart';
 import 'package:quarantine_flutter/Login.dart';
@@ -13,6 +15,65 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  bool visible = false;
+
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  Future userRegistration() async{
+
+    // Showing CircularProgressIndicator.
+    setState(() {
+      visible = true ;
+    });
+
+    // Getting value from Controller
+    String username = usernameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    // SERVER API URL
+    var url = 'https://chauvinistic-alcoho.000webhostapp.com/register_user.php';
+
+    // Store all data with Param Name.
+    var data = {'username': username, 'email': email, 'password' : password};
+
+    // Starting Web API Call.
+    var response = await http.post(url, body: json.encode(data));
+
+    // Getting Server response into variable.
+    var message = jsonDecode(response.body);
+
+    // If Web call Success than Hide the CircularProgressIndicator.
+    if(response.statusCode == 200){
+      setState(() {
+        visible = false;
+      });
+    }
+
+    // Showing Alert Dialog with Response JSON Message.
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(message,style:
+            TextStyle(color: Colors.white),),
+          actions: <Widget>[
+            FlatButton(
+              child: new Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+
+  }
+
+
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -33,36 +94,37 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Widget _entryField(String title, {bool isPassword = false}) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          TextField(
-              obscureText: isPassword,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
-                  filled: true))
-        ],
-      ),
-    );
-  }
+//  Widget _entryField(String title, {bool isPassword = false}) {
+//    return Container(
+//      margin: EdgeInsets.symmetric(vertical: 10),
+//      child: Column(
+//        crossAxisAlignment: CrossAxisAlignment.start,
+//        children: <Widget>[
+//          Text(
+//            title,
+//            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+//          ),
+//          SizedBox(
+//            height: 10,
+//          ),
+//          TextField(
+//
+//              obscureText: isPassword,
+//              decoration: InputDecoration(
+//                  border: InputBorder.none,
+//                  fillColor: Color(0xfff3f3f4),
+//                  filled: true))
+//        ],
+//      ),
+//    );
+//  }
 
   Widget _submitButton() {
     //testing
     return GestureDetector(
       onTap: (){
         // Navigate to the second screen
-        Navigator.pushNamed(context, '/Homepage');
+        userRegistration();
       },
 
       child: Container(
@@ -158,9 +220,85 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget _emailPasswordWidget() {
     return Column(
       children: <Widget>[
-        _entryField("Username"),
-        _entryField("Email id"),
-        _entryField("Password", isPassword: true),
+//        _entryField("Username"),
+//        _entryField("Email id"),
+//        _entryField("Password", isPassword: true),
+
+    Container(
+    margin: EdgeInsets.symmetric(vertical: 10),
+    child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+    Text(
+    "Username",
+    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+    ),
+    SizedBox(
+    height: 10,
+    ),
+    TextField(
+
+    controller: usernameController,
+    decoration: InputDecoration(
+    border: InputBorder.none,
+    fillColor: Color(0xfff3f3f4),
+    filled: true),)
+    ],
+    ),
+    ),
+
+
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Email",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextField(
+
+                controller: emailController,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    fillColor: Color(0xfff3f3f4),
+                    filled: true),)
+            ],
+          ),
+        ),
+
+
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Password",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextField(
+                obscureText: true,
+                autocorrect: true,
+                controller: passwordController,
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    fillColor: Color(0xfff3f3f4),
+                    filled: true),)
+            ],
+          ),
+        ),
+
+
+
+
       ],
     );
   }
@@ -212,3 +350,5 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
+

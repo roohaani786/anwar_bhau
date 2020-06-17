@@ -34,6 +34,7 @@ dependencies:
   flutter_svg:
   google_fonts:
   jitsi_meet:
+  neumorphic: any
 
 
 dev_dependencies:
